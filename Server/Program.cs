@@ -26,9 +26,9 @@ namespace Server
             /// srvCertCN.SubjectName should be set to the service's username. .NET WindowsIdentity class provides information about Windows user running the given process
 			string srvCertCN = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
             NetTcpBinding binding1 = new NetTcpBinding();
-            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
+            binding1.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
 
-            string address = "net.tcp://localhost:9999/Receiver";
+            string address = "net.tcp://192.168.1.3:9999/Receiver";
             ServiceHost host = new ServiceHost(typeof(Zahtjev));
             host.AddServiceEndpoint(typeof(IZahtjev), binding1, address);
 

@@ -11,18 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Manager", "Manager\Manager.csproj", "{CB1181F2-3285-4A01-8FA4-7761B2FEEE93}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Sertifikati", "Sertifikati", "{A27882A7-B770-47E1-A9D0-48160740B625}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\TestCA.cer = ..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\TestCA.cer
-		..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\TestCA.pvk = ..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\TestCA.pvk
-		..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFClient.cer = ..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFClient.cer
-		..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFClient.pfx = ..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFClient.pfx
-		..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFClient.pvk = ..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFClient.pvk
-		..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFService.cer = ..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFService.cer
-		..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFService.pfx = ..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFService.pfx
-		..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFService.pvk = ..\..\..\..\..\Program Files (x86)\Microsoft SDKs\Windows\v7.1\Bin\WCFService.pvk
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
