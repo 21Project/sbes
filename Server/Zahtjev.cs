@@ -17,9 +17,17 @@ namespace Server
 
             WindowsIdentity wId = id as WindowsIdentity;
 
-            Console.WriteLine(String.Format("Authentificated User: {0}", wId.Name.ToString()));
+            if (wId.Name.ToString() != "")
+            {
+                Console.WriteLine(String.Format("Authentificated User: {0}", wId.Name.ToString()));
+            }
+            else
+            {
+                Console.WriteLine("Klijen identifikovan preko sertifikata...");
+            }
 
-            Console.WriteLine("Ovo je test metoda !!!!!");   
+
+            Console.WriteLine("Ovo je test metoda !!!!!");
         }
     }
 }

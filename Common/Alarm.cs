@@ -14,7 +14,7 @@ namespace Common
         {
         }
 
-        public Alarm(DateTime vrijemeGenerisanjaAlarma, string porukaOAlarmu, short rizik)
+        public Alarm(DateTime vrijemeGenerisanjaAlarma, string porukaOAlarmu, int rizik)
         {
             VrijemeGenerisanjaAlarma = vrijemeGenerisanjaAlarma;
             PorukaOAlarmu = porukaOAlarmu;
@@ -26,6 +26,6 @@ namespace Common
         [DataMember]
         public string PorukaOAlarmu { get; set; }
         [DataMember]
-        public short Rizik { get; set; }
+        public int Rizik { get; set; }
     }
 }

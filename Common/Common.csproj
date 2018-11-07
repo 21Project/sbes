@@ -43,9 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Alarm.cs" />
-    <Compile Include="Class1.cs" />
+    <Compile Include="Blok.cs" />
+    <Compile Include="GrupaPermisija.cs" />
+    <Compile Include="GenerisanjeIndeksa.cs" />
     <Compile Include="IZahtjev.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RadSaXML.cs" />
+    <Compile Include="Vektor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

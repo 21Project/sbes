@@ -34,6 +34,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.IdentityModel" />
     <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -44,6 +45,8 @@
   <ItemGroup>
     <Compile Include="CertManager.cs" />
     <Compile Include="ClientCertValidator.cs" />
+    <Compile Include="CustomAuthorizationManager.cs" />
+    <Compile Include="CustomAuthorizationPolicy.cs" />
     <Compile Include="CustomPrincipal.cs" />
     <Compile Include="DigitalSignature.cs" />
     <Compile Include="Formatter.cs" />
