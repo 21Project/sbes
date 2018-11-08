@@ -11,6 +11,7 @@ namespace Common
     public interface IZahtjev
     {
         [OperationContract]
-        void GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa, Alarm alarm);
+		[FaultContract(typeof(MyException))]
+        bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa, Alarm alarm);
     }
 }

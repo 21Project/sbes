@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Security;
 using System.Security.Cryptography.X509Certificates;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,12 +31,15 @@ namespace Manager
             /// Check whether the subjectName of the certificate is exactly the same as the given "subjectName"
             foreach (X509Certificate2 c in certCollection)
             {
-                if (c.SubjectName.Name.Equals(string.Format("CN={0}", subjectName)))
+                
+				
+				if (c.SubjectName.Name.Contains(string.Format("CN={0}", subjectName)))
                 {
+					
                     return c;
                 }
             }
-
+			
             return null;
         }
 
@@ -72,5 +78,56 @@ namespace Manager
 
             return certificate;
         }
+
+
+        //public static X509Certificate2 GetCertificate(IIdentity identity)
+        //{
+        //    try
+        //    {
+        //        // X509Identity is an internal class, so we cannot directly access it
+        //        Type x509IdentityType = identity.GetType();
+
+        //        // The certificate is stored inside a private field of this class
+        //        FieldInfo certificateField = x509IdentityType.GetField("certificate", BindingFlags.Instance | BindingFlags.NonPublic);
+
+        //        return (X509Certificate2)certificateField.GetValue(identity);
+        //    }
+        //    catch (Exception)
+        //    {
+        //        return null;
+        //    }
+        //}
+
+
+  //      public static string GetGroupCrt(X509Certificate2 cert)
+		//{
+		//	//string clCertCN = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
+		//	//X509Certificate2 cert = GetCertificateFromStorage(StoreName.TrustedPeople, StoreLocation.LocalMachine, name);
+			
+		//	string[] s = cert.SubjectName.Name.Split(',');
+		//	string[] s1 = s[1].Split('=');
+
+		//	return s1[1];
+
+		//}
+		//public static bool IsInRoleCer(string grupa)
+		//{
+		//	//string grupa = GetGroupCrt();
+		//	RadSaXML r = new RadSaXML();
+		//	List<GrupaPermisija> lista = r.CitajIzXML();
+
+		//	foreach(GrupaPermisija g in lista)
+		//	{
+		//		if(g.NazivGrupe == grupa)
+		//		{
+		//			if (g.Permisije.Contains("Trazi"))
+		//			{
+		//				return true;
+		//			}
+		//		}
+		//	}
+
+		//	return false;
+		//}
     }
 }

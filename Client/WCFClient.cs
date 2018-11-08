@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using Manager;
 using System.Security.Principal;
 using System.Security.Cryptography.X509Certificates;
+using System.ServiceModel.Security;
 
 namespace Client
 {
@@ -46,16 +47,23 @@ namespace Client
             this.Close();
         }
 
-        public void GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa, Alarm alarm)
+        public bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa, Alarm alarm)
         {
+			bool ret = false;
             try
             {
-                factory.GenerisiZahtjev(brojBloka, brojVektora, brojElementa,alarm);
+                 ret = factory.GenerisiZahtjev(brojBloka, brojVektora, brojElementa,alarm);
             }
-            catch (Exception e)
-            {
-                Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
-            }
+			catch (FaultException<MyException> ex)
+			{
+				Console.WriteLine("[TestCommunication] ERROR = {0}", ex.Detail.Message);
+			}
+			//catch (SecurityAccessDeniedException e)
+			//{
+			//    Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
+			//}
+
+			return ret;
         }
     }
 }

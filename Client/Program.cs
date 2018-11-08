@@ -3,9 +3,11 @@ using Manager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.ServiceModel;
+using System.ServiceModel.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +17,7 @@ namespace Client
     {
         static void Main(string[] args)
         {
+			Console.ReadLine();
             Console.WriteLine("Client is alive....");
             int unos;
             do
@@ -33,9 +36,26 @@ namespace Client
                 string adresa = "net.tcp://localhost:4000/IZahtjev";
                 NetTcpBinding binding = new NetTcpBinding();
 
-                IZahtjev factory = new ChannelFactory<IZahtjev>(binding, adresa).CreateChannel();
-                factory.GenerisiZahtjev(2, 2, 2, new Alarm(DateTime.Now, "bzv", 2));
-            }
+				//IZahtjev factory = new ChannelFactory<IZahtjev>(binding, adresa).CreateChannel();
+
+				using (WCFClientWin proxy = new WCFClientWin(binding, new EndpointAddress(new Uri(adresa))))
+				{
+					try
+					{
+						proxy.GenerisiZahtjev(2, 2, 2, new Alarm(DateTime.Now, "bzv", 2));
+					}
+					catch (FaultException<MyException> ex)
+					{
+						Console.WriteLine("[TestCommunication] ERROR = {0}", ex.Detail.Message);
+					}
+					//catch (SecurityAccessDeniedException e)
+					//{
+					//	Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
+					//}
+					//proxy.GenerisiZahtjev(2, 2, 2, new Alarm(DateTime.Now, "bzv", 2));
+				}
+
+			}
             else
             {
                 string srvCertCN = "wcfservice";

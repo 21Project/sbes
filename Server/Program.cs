@@ -7,6 +7,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.ServiceModel;
+using System.ServiceModel.Description;
 using System.ServiceModel.Security;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,24 @@ namespace Server
     {
         static void Main(string[] args)
         {
+			Console.ReadLine();
             NetTcpBinding binding = new NetTcpBinding();
             string adresa = "net.tcp://localhost:4000/IZahtjev";
             ServiceHost svc = new ServiceHost(typeof(Zahtjev));
 
             svc.AddServiceEndpoint(typeof(IZahtjev), binding, adresa);
+
+            svc.Authorization.ServiceAuthorizationManager = new CustomAuthorizationManager();
+            svc.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
+            svc.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
+
+
+            List<IAuthorizationPolicy> policies = new List<IAuthorizationPolicy>();
+            policies.Add(new CustomAuthorizationPolicy());
+            svc.Authorization.ExternalAuthorizationPolicies = policies.AsReadOnly();
+            svc.Authorization.PrincipalPermissionMode = System.ServiceModel.Description.PrincipalPermissionMode.Custom;
+
+
 
             // InterniModel interniModel = new InterniModel();
 
@@ -45,13 +59,17 @@ namespace Server
             host.Credentials.ServiceCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, srvCertCN);
             /// host.Credentials.ServiceCertificate.Certificate = CertManager.GetCertificateFromFile("WCFService.pfx");
             /// 
+          //  host.Authorization.ServiceAuthorizationManager = new AuthorizationManagerCert();
+            List<IAuthorizationPolicy> policies1 = new List<IAuthorizationPolicy>();
+            policies1.Add(new AuthorizationPolicyCert());
+            host.Authorization.ExternalAuthorizationPolicies = policies1.AsReadOnly();
+            host.Authorization.PrincipalPermissionMode = System.ServiceModel.Description.PrincipalPermissionMode.Custom;
 
-            svc.Authorization.ServiceAuthorizationManager = new CustomAuthorizationManager();
-            List<IAuthorizationPolicy> policies = new List<IAuthorizationPolicy>();
-            policies.Add(new CustomAuthorizationPolicy());
-            svc.Authorization.ExternalAuthorizationPolicies = policies.AsReadOnly();
-            svc.Authorization.PrincipalPermissionMode = System.ServiceModel.Description.PrincipalPermissionMode.Custom;
+            //host.Authorization.ServiceAuthorizationManager = new CustomAuthorizationManager();
+            host.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
+            host.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
 
+           
             // host.Credentials.ServiceCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.CurrentUser, srvCertCN);
             // host.Credentials.ClientCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.Custom;
             // host.Credentials.ClientCertificate.Authentication.CustomCertificateValidator = new ServiceCertValidator();
