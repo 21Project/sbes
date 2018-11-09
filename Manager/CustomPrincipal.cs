@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,17 +16,18 @@ namespace Manager
     {
         private WindowsIdentity identity = null;
 
-        private IIdentity ident;
-        public IIdentity Ident
+        private IIdentity identitet = null;
+        public IIdentity Identitet
         {
             get
             {
-                return ident;
+                return this.identitet;
             }
         }
 
         private Dictionary<string, string[]> roles = new Dictionary<string, string[]>();
-		RadSaXML r = new RadSaXML();
+        RadSaXML r = new RadSaXML();
+
         public CustomPrincipal(WindowsIdentity winIdentity)
         {
             this.identity = winIdentity;
@@ -36,23 +38,23 @@ namespace Manager
                 var name = sid.Translate(typeof(NTAccount));
                 string groupName = Formatter.ParseName(name.ToString());
 
-				List<GrupaPermisija> lista = r.CitajIzXML();
+                List<GrupaPermisija> lista = r.CitajIzXML();
                 //string[] permisije = new string[] { "permisija1" };
-				foreach(GrupaPermisija g in lista)
-				{
-					if(g.NazivGrupe == groupName)
-					{ 
-						//if(g.Permisije.Count == 0)
-						//{
+                foreach (GrupaPermisija g in lista)
+                {
+                    if (g.NazivGrupe == groupName)
+                    {
+                        //if(g.Permisije.Count == 0)
+                        //{
 
-						//}
-						if (!roles.ContainsKey(groupName))
-						{
-							roles.Add(groupName, g.Permisije.ToArray());
-							break;
-						}
-					}
-				}
+                        //}
+                        if (!roles.ContainsKey(groupName))
+                        {
+                            roles.Add(groupName, g.Permisije.ToArray());
+                            break;
+                        }
+                    }
+                }
 
                 //if (!roles.ContainsKey(groupName))
                 //{
@@ -61,41 +63,38 @@ namespace Manager
             }
         }
 
+        public CustomPrincipal(X509Certificate2 clientCert, IIdentity id)
+        {
+            this.identitet = id;
 
-        //public CustomPrincipal(X509Certificate2 clientCert, IIdentity ident)
-        //{
-        //    this.ident = ident;
 
-        //    string organization = null;
-        //    string group = null;
+            string group = null;
+            if (!clientCert.SubjectName.Name.Contains(','))
+            {
+                MyException e = new MyException();
+                e.Message = "Nemate pravo da izvrsite operaciju.";
+                throw new FaultException<MyException>(e);
+            }
 
-        //    string[] nameParts = clientCert.SubjectName.Name.Split(',');
-        //    foreach (var pp in nameParts)
-        //    {
-        //        string[] keyVal = pp.Trim().Split('=');
-        //        if (keyVal[0] == "O")
-        //        {
-        //            organization = keyVal[1];
-        //        }
-        //        else if (keyVal[0] == "OU")
-        //        {
-        //            group = keyVal[1];
-        //        }
+            string[] ss = clientCert.SubjectName.Name.Split(',');
+            string[] s = ss[1].Split('=');
+            if (s[0].Trim() == "OU")
+            {
+                group = s[1].Trim();
+            }
 
-        //    }
+            List<GrupaPermisija> lista = r.CitajIzXML();
 
-        //    //string finalGroupName = organization == null ? group : organization + "\\" + group;
-        //    string finalGroupName = group;
+            foreach (GrupaPermisija g in lista)
+            {
+                if (g.NazivGrupe == group)
+                {
+                    roles.Add(group, g.Permisije.ToArray());
+                }
+            }
 
-        //    //try
-        //    //{
-        //    //    roles.UnionWith(RBACManager.GetInstance().GetPermsForGroup(finalGroupName));
-        //    //}
-        //    //catch (Exception)
-        //    //{
-        //    //}
-        //}
 
+        }
 
 
         public IIdentity Identity
@@ -128,6 +127,13 @@ namespace Manager
             }
 
             return IsAuthz;
+        }
+
+        public string VratiIme()
+        {
+            string[] ss = identitet.Name.Split(',');
+            string[] s = ss[0].Trim().Split('=');
+            return s[1].Trim();
         }
     }
 }

@@ -20,12 +20,13 @@ namespace Server
         {
 			Console.ReadLine();
             NetTcpBinding binding = new NetTcpBinding();
+            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
             string adresa = "net.tcp://localhost:4000/IZahtjev";
             ServiceHost svc = new ServiceHost(typeof(Zahtjev));
 
             svc.AddServiceEndpoint(typeof(IZahtjev), binding, adresa);
 
-            svc.Authorization.ServiceAuthorizationManager = new CustomAuthorizationManager();
+           
             svc.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
             svc.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
 
@@ -37,7 +38,8 @@ namespace Server
 
 
 
-            // InterniModel interniModel = new InterniModel();
+            InterniModel interniModel = new InterniModel();
+            interniModel.NapraviInterniModel();
 
             /// srvCertCN.SubjectName should be set to the service's username. .NET WindowsIdentity class provides information about Windows user running the given process
             string srvCertCN = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
@@ -61,7 +63,7 @@ namespace Server
             /// 
           //  host.Authorization.ServiceAuthorizationManager = new AuthorizationManagerCert();
             List<IAuthorizationPolicy> policies1 = new List<IAuthorizationPolicy>();
-            policies1.Add(new AuthorizationPolicyCert());
+            policies1.Add(new CustomAuthorizationPolicy());
             host.Authorization.ExternalAuthorizationPolicies = policies1.AsReadOnly();
             host.Authorization.PrincipalPermissionMode = System.ServiceModel.Description.PrincipalPermissionMode.Custom;
 
@@ -69,31 +71,37 @@ namespace Server
             host.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
             host.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
 
-           
+
             // host.Credentials.ServiceCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.CurrentUser, srvCertCN);
             // host.Credentials.ClientCertificate.Authentication.CertificateValidationMode = X509CertificateValidationMode.Custom;
             // host.Credentials.ClientCertificate.Authentication.CustomCertificateValidator = new ServiceCertValidator();
             // host.Credentials.ClientCertificate.Authentication.RevocationMode = X509RevocationMode.NoCheck;
 
-            try
-            {
-                host.Open();
-                svc.Open();
-                Console.WriteLine("WCFService is started.\nPress <enter> to stop ...");
-                Console.ReadLine();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("[ERROR] {0}", e.Message);
-                Console.WriteLine("[StackTrace] {0}", e.StackTrace);
-            }
-            finally
-            {
-                host.Close();
-                svc.Close();
-            }
+            //try
+            //{
+            //    host.Open();
+            //    svc.Open();
+            //    Console.WriteLine("WCFService is started.\nPress <enter> to stop ...");
+            //    Console.ReadLine();
+            //}
+            //catch (Exception e)
+            //{
+            //    Console.WriteLine("[ERROR] {0}", e.Message);
+            //    Console.WriteLine("[StackTrace] {0}", e.StackTrace);
+            //}
+            //finally
+            //{
+            //    host.Close();
+            //    svc.Close();
+            //}
 
+            host.Open();
+            svc.Open();
+            Console.WriteLine("WCFService is started.\nPress <enter> to stop ...");
+            Console.ReadLine();
 
+            host.Close();
+            svc.Close();
 
 
             Console.ReadKey();

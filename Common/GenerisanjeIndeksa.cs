@@ -16,9 +16,9 @@ namespace Common
         {
             List<int> retVal = new List<int>();
             Random r = new Random();
+            retVal.Add(r.Next(0, 10));
             retVal.Add(r.Next(0, 100));
-            retVal.Add(r.Next(0, 1000));
-            retVal.Add(r.Next(0, 100000));
+            retVal.Add(r.Next(0, 10000));
 
             return retVal;
 

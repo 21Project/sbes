@@ -8,10 +8,9 @@ using System.Threading.Tasks;
 namespace Common
 {
     [ServiceContract]
-    public interface IZahtjev
+    public interface IBazaPodataka
     {
         [OperationContract]
-		[FaultContract(typeof(MyException))]
-        bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa);
+        void Upisi(Alarm a, string imeKlijenta);
     }
 }

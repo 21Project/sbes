@@ -8,14 +8,14 @@ namespace Common
 {
     public class Vektor
     {
-        private Dictionary<int, Alarm> elementi;
+        public static Dictionary<int, Alarm> elementi;
         private Random r = new Random();
 
-        public Vektor()
+        public void NapraviVektor()
         {
             elementi = new Dictionary<int, Alarm>();
             int x;
-            for (int i = 0; i < 100000; i++)
+            for (int i = 0; i < 10000; i++)
             {
                 if (i % 2 == 0)
                 {
@@ -27,6 +27,11 @@ namespace Common
                     elementi.Add(i, new Alarm());
                 }
             }
+        }
+
+        public Dictionary<int, Alarm> GetElementi
+        {
+            get { return elementi; }
         }
     }
 }

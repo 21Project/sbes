@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Common;
+using System;
 using System.Collections.Generic;
 using System.IdentityModel.Claims;
 using System.IdentityModel.Policy;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +67,11 @@ namespace Manager
                 if (winIdentitiy != null)
                 {
                     principal = new CustomPrincipal(winIdentitiy);
+                }
+                else
+                {
+                    X509Certificate2 certificate = DobaviSertifikat.GetCertificate(identity);
+                    principal = new CustomPrincipal(certificate, identity);
                 }
 
                 return principal;

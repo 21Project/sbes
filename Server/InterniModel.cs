@@ -9,12 +9,14 @@ namespace Server
 {
     public class InterniModel
     {
-        Dictionary<int, Blok> blokovi;
+        public static Dictionary<int, Blok> blokovi;
 
-        public InterniModel()
+        public void NapraviInterniModel()
         {
+            Blok b = new Blok();
+            b.NapraviBlok();
             blokovi = new Dictionary<int, Blok>();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < 10; i++)
             {
                 blokovi.Add(i, new Blok());
             }

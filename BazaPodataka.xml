@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<BP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>2018-11-09T15:29:29.8648157+01:00</VrijemeGenerisanjaAlarma>
+      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
+      <Rizik>7</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-09T15:29:48.4402022+01:00</VremeUpisa>
+    <NazivKlijenta>P05-26\user2</NazivKlijenta>
+  </ElementZaUpis>
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>2018-11-09T15:52:13.9156328+01:00</VrijemeGenerisanjaAlarma>
+      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
+      <Rizik>6</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-09T15:52:20.017398+01:00</VremeUpisa>
+    <NazivKlijenta>user1</NazivKlijenta>
+  </ElementZaUpis>
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>2018-11-09T16:47:40.8686432+01:00</VrijemeGenerisanjaAlarma>
+      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
+      <Rizik>8</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-09T16:48:09.1267433+01:00</VremeUpisa>
+    <NazivKlijenta>user1</NazivKlijenta>
+  </ElementZaUpis>
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>2018-11-09T17:23:23.3733105+01:00</VrijemeGenerisanjaAlarma>
+      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
+      <Rizik>9</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-09T17:23:46.0550619+01:00</VremeUpisa>
+    <NazivKlijenta>user1</NazivKlijenta>
+  </ElementZaUpis>
+</BP>

@@ -16,61 +16,62 @@ namespace Server
 {
     public class Zahtjev : IZahtjev
     {
-        public bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa, Alarm alarm)
+        public bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa)
         {
-			bool ret = false;
+            bool ret = false;
             IIdentity id = Thread.CurrentPrincipal.Identity;
-			IPrincipal principal = Thread.CurrentPrincipal;
+            IPrincipal principal = Thread.CurrentPrincipal;
 
-			WindowsIdentity wId = id as WindowsIdentity;
+            WindowsIdentity wId = id as WindowsIdentity;
 
-            if (wId != null)//.Name.ToString() != "")
-            {
-				if (principal.IsInRole("Trazi"))
-				{
-					Console.WriteLine(String.Format("Authentificated User: {0}", wId.Name.ToString()));
-				}
-				else
-				{
-					MyException ex = new MyException();
-					ex.Message = "No permision for TRAZI";
-					throw new FaultException<MyException>(ex);
-					
-				}
 
-			}
-            else
+            if (principal.IsInRole("Trazi"))
             {
 
-                //  X509Certificate2 cer = CertManager.GetCertificate(id);
-
-                //	string name = CertManager.GetGroupCrt(cer);
-                //if (CertManager.IsInRoleCer(name))
-                //{ 
-                if (principal.IsInRole("Trazi"))
+                Console.WriteLine(String.Format("Authentificated User"));
+                Console.WriteLine(brojBloka.ToString() + " " + brojVektora.ToString() + " " + brojElementa.ToString());
+                Dictionary<int, Blok> blok = InterniModel.blokovi;
+                Blok b = blok[brojBloka];
+                Dictionary<int, Vektor> vektor = b.GetVektori;
+                Vektor v = vektor[brojVektora];
+                Dictionary<int, Alarm> alarm = v.GetElementi;
+                Alarm a = alarm[brojElementa];
+                if (a == null)
                 {
-                    Console.WriteLine("Klijen identifikovan preko sertifikata...");
+                    Console.WriteLine("Alarm je null.");
                 }
                 else
                 {
-                    MyException ex = new MyException();
-                    ex.Message = "No permision for TRAZI";
-                    throw new FaultException<MyException>(ex);
+                    Console.WriteLine("Alarm: {0}, {1}, {2}", a.PorukaOAlarmu, a.VrijemeGenerisanjaAlarma, a.Rizik);
+                    BazaPodataka baza = new BazaPodataka();
+                    if (wId == null)
+                    {
+                        baza.Upisi(a, (principal as CustomPrincipal).VratiIme());
+                    }
+                    else
+                    {
+                        baza.Upisi(a, wId.Name);
+                    }
+
+
 
                 }
-                //	}
-                //else
-                //{
-                //	MyException ex = new MyException();
-                //	ex.Message = "No permision for TRAZI";
-                //	throw new FaultException<MyException>(ex);
 
-                //}
+
 
             }
 
+            else
+            {
+                MyException ex = new MyException();
+                ex.Message = "No permision for TRAZI";
+                throw new FaultException<MyException>(ex);
+
+            }
+
+
             Console.WriteLine("Ovo je test metoda !!!!!");
-			return ret;
+            return ret;
         }
     }
 }

@@ -28,9 +28,15 @@ namespace Client
             this.Credentials.ServiceCertificate.Authentication.RevocationMode = X509RevocationMode.NoCheck;
 
             /// Set appropriate client's certificate on the channel. Use CertManager class to obtain the certificate based on the "cltCertCN"
-            this.Credentials.ClientCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, cltCertCN);
-
-            factory = this.CreateChannel();
+            try
+            {
+                this.Credentials.ClientCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, cltCertCN);
+                factory = this.CreateChannel();
+            }
+            catch (FaultException<MyException> ex)
+            {
+                Console.WriteLine("ERROR = {0}", ex.Detail.Message);
+            }
         }
 
        
@@ -47,12 +53,12 @@ namespace Client
             this.Close();
         }
 
-        public bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa, Alarm alarm)
+        public bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa)
         {
 			bool ret = false;
             try
             {
-                 ret = factory.GenerisiZahtjev(brojBloka, brojVektora, brojElementa,alarm);
+                ret = factory.GenerisiZahtjev(brojBloka, brojVektora, brojElementa);
             }
 			catch (FaultException<MyException> ex)
 			{

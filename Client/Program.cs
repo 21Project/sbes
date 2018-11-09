@@ -32,28 +32,49 @@ namespace Client
 
             if(unos == 1)
             {
-                //10.1.212.171
+                //10.1.212.171, 10.1.212.167
                 string adresa = "net.tcp://localhost:4000/IZahtjev";
                 NetTcpBinding binding = new NetTcpBinding();
+                binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
 
-				//IZahtjev factory = new ChannelFactory<IZahtjev>(binding, adresa).CreateChannel();
+                try
+                {
 
-				using (WCFClientWin proxy = new WCFClientWin(binding, new EndpointAddress(new Uri(adresa))))
-				{
-					try
-					{
-						proxy.GenerisiZahtjev(2, 2, 2, new Alarm(DateTime.Now, "bzv", 2));
-					}
-					catch (FaultException<MyException> ex)
-					{
-						Console.WriteLine("[TestCommunication] ERROR = {0}", ex.Detail.Message);
-					}
-					//catch (SecurityAccessDeniedException e)
-					//{
-					//	Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
-					//}
-					//proxy.GenerisiZahtjev(2, 2, 2, new Alarm(DateTime.Now, "bzv", 2));
-				}
+                    using (WCFClientWin proxy = new WCFClientWin(binding, new EndpointAddress(new Uri(adresa))))
+                    {
+                        try
+                        {
+                            GenerisanjeIndeksa g = new GenerisanjeIndeksa();
+                            List<int> lista = g.GenerisiIndekse();
+
+                            proxy.GenerisiZahtjev(lista[0], lista[1], lista[2]);
+                        }
+                        catch (FaultException<MyException> ex)
+                        {
+                            Console.WriteLine("[TestCommunication] ERROR = {0}", ex.Detail.Message);
+                        }
+                        catch (SecurityNegotiationException e)
+                        {
+                            Console.WriteLine("ERROR1 {0}", e.Message);
+                        }
+
+                        //catch (SecurityAccessDeniedException e)
+                        //{
+                        //	Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
+                        //}
+                        //proxy.GenerisiZahtjev(2, 2, 2, new Alarm(DateTime.Now, "bzv", 2));
+                    }
+                }
+                catch (CommunicationException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+                //catch (SecurityAccessDeniedException e)
+                //{
+                //	Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
+                //}
+                //proxy.GenerisiZahtjev(2, 2, 2, new Alarm(DateTime.Now, "bzv", 2));
+            
 
 			}
             else
@@ -70,12 +91,21 @@ namespace Client
                                           new X509CertificateEndpointIdentity(srvCert));
 
 
-                using (WCFClient proxy = new WCFClient(binding, address1))
+                try
                 {
-                    
-                    proxy.GenerisiZahtjev(2, 2, 2, new Alarm());
-                    Console.WriteLine("TestCommunication() finished. Press <enter> to continue ...");
-                    Console.ReadLine();
+                    using (WCFClient proxy = new WCFClient(binding, address1))
+                    {
+                        GenerisanjeIndeksa g = new GenerisanjeIndeksa();
+                        List<int> lista = g.GenerisiIndekse();
+
+                        proxy.GenerisiZahtjev(lista[0], lista[1], lista[2]);
+                        Console.WriteLine("TestCommunication() finished. Press <enter> to continue ...");
+                        Console.ReadLine();
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    Console.WriteLine("Zavrsena komunikacija!");
                 }
 
             }

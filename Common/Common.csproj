@@ -44,8 +44,11 @@
   <ItemGroup>
     <Compile Include="Alarm.cs" />
     <Compile Include="Blok.cs" />
+    <Compile Include="DobaviSertifikat.cs" />
+    <Compile Include="ElementZaUpis.cs" />
     <Compile Include="GrupaPermisija.cs" />
     <Compile Include="GenerisanjeIndeksa.cs" />
+    <Compile Include="IBazaPodataka.cs" />
     <Compile Include="IZahtjev.cs" />
     <Compile Include="MyException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -19,12 +19,12 @@ namespace Client
 
 		}
 
-		public bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa, Alarm alarm)
+		public bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa)
 		{
 			bool ret = false;
 			try
 			{
-				ret = factory.GenerisiZahtjev(brojBloka, brojVektora, brojElementa, alarm);
+				ret = factory.GenerisiZahtjev(brojBloka, brojVektora, brojElementa);
 			}
 			//catch (SecurityAccessDeniedException e)
 			//{

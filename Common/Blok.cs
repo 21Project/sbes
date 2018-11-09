@@ -8,18 +8,23 @@ namespace Common
 {
     public class Blok
     {
-        private Dictionary<int, Vektor> vektori;
+        public static Dictionary<int, Vektor> vektori;
 
-        public Blok()
+        public void NapraviBlok()
         {
+            Vektor v = new Vektor();
+            v.NapraviVektor();
             vektori = new Dictionary<int, Vektor>();
-            for (int i = 0; i < 1000; i++)
+            for (int i = 0; i < 100; i++)
             {
                 vektori.Add(i, new Vektor());
             }
         }
 
-
+        public Dictionary<int, Vektor> GetVektori
+        {
+            get { return vektori; }
+        }
 
     }
 }

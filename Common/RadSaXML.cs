@@ -56,5 +56,58 @@ namespace Common
 
         }
 
+
+        public void UpisiUXML(ElementZaUpis el)
+        {
+            List<ElementZaUpis> lista = new List<ElementZaUpis>();
+            XmlSerializer xml = new XmlSerializer(typeof(List<ElementZaUpis>), new XmlRootAttribute("BP"));
+
+            if (File.Exists(@"../../../BazaPodataka.xml"))
+            {
+
+                lista = Citaj();
+                lista.Add(el);
+                using (TextWriter write = new StreamWriter(@"../../../BazaPodataka.xml"))
+                {
+                    xml.Serialize(write, lista);
+                }
+
+
+            }
+            else
+            {
+
+                lista.Add(el);
+                using (TextWriter write = new StreamWriter(@"../../../BazaPodataka.xml"))
+                {
+                    xml.Serialize(write, lista);
+                }
+            }
+
+        }
+
+        public List<ElementZaUpis> Citaj()
+        {
+            try
+            {
+                List<ElementZaUpis> retVal = new List<ElementZaUpis>();
+                XmlSerializer desrializer = new XmlSerializer(typeof(List<ElementZaUpis>), new XmlRootAttribute("BP"));
+
+                using (TextReader reader = new StreamReader(@"../../../BazaPodataka.xml"))
+                {
+                    object obj = desrializer.Deserialize(reader);
+                    retVal = (List<ElementZaUpis>)obj;
+                }
+                return retVal;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+
+        }
+
+
     }
 }
