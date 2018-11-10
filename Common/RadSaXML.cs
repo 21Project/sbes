@@ -108,6 +108,49 @@ namespace Common
 
         }
 
+        public void NapraviXMLRecenica()
+        {
+            XmlSerializer xml = new XmlSerializer(typeof(List<string>), new XmlRootAttribute("Poruke"));
+
+            List<string> lista = new List<string>();
+            lista.Add("Alarm 1");
+            lista.Add("Alarm 2");
+            lista.Add("Alarm 3");
+            lista.Add("Alarm 4");
+            lista.Add("Alarm 5");
+            lista.Add("Alarm 6");
+            lista.Add("Alarm 7");
+            lista.Add("Alarm 8");
+            lista.Add("Alarm 9");
+            lista.Add("Alarm 10");
+
+
+            using (TextWriter write = new StreamWriter(@"../../../PorukeAlarmi.xml"))
+            {
+                xml.Serialize(write, lista);
+            }
+        }
+
+        public List<string> CitajPoruke()
+        {
+            try
+            {
+                List<string> retVal = new List<string>();
+                XmlSerializer desrializer = new XmlSerializer(typeof(List<string>), new XmlRootAttribute("Poruke"));
+
+                using (TextReader reader = new StreamReader(@"../../../PorukeAlarmi.xml"))
+                {
+                    object obj = desrializer.Deserialize(reader);
+                    retVal = (List<string>)obj;
+                }
+                return retVal;
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return null;
+            }
+        }
 
     }
 }

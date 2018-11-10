@@ -1,0 +1,10 @@
+C:\Users\Marija\Desktop\New folder (3)\sbes\Manager\obj\Debug\Manager.csproj.CoreCompileInputs.cache
+C:\Users\Marija\Desktop\New folder (3)\sbes\Manager\obj\Debug\Manager.csprojResolveAssemblyReference.cache
+C:\Users\Marija\Desktop\New folder (3)\sbes\Manager\bin\Debug\Manager.dll
+C:\Users\Marija\Desktop\New folder (3)\sbes\Manager\bin\Debug\Manager.pdb
+C:\Users\Marija\Desktop\New folder (3)\sbes\Manager\bin\Debug\Common.dll
+C:\Users\Marija\Desktop\New folder (3)\sbes\Manager\bin\Debug\Common.pdb
+C:\Users\Marija\Desktop\New folder (3)\sbes\Manager\obj\Debug\Manager.dll
+C:\Users\Marija\Desktop\New folder (3)\sbes\Manager\obj\Debug\Manager.pdb
+C:\Users\Marija\Desktop\New folder (3)\sbes\Manager\obj\Debug\Manager.AuditEventsFile.resources
+C:\Users\Marija\Desktop\New folder (3)\sbes\Manager\obj\Debug\Manager.csproj.GenerateResource.Cache

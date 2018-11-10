@@ -19,6 +19,10 @@ namespace Server
         static void Main(string[] args)
         {
 			Console.ReadLine();
+
+            RadSaXML ra = new RadSaXML();
+          //  ra.NapraviXMLRecenica();
+
             NetTcpBinding binding = new NetTcpBinding();
             binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
             string adresa = "net.tcp://localhost:4000/IZahtjev";

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Poruke xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <string>Alarm 1</string>
+  <string>Alarm 2</string>
+  <string>Alarm 3</string>
+  <string>Alarm 4</string>
+  <string>Alarm 5</string>
+  <string>Alarm 6</string>
+  <string>Alarm 7</string>
+  <string>Alarm 8</string>
+  <string>Alarm 9</string>
+  <string>Alarm 10</string>
+</Poruke>

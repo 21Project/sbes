@@ -36,4 +36,56 @@
     <VremeUpisa>2018-11-09T17:23:46.0550619+01:00</VremeUpisa>
     <NazivKlijenta>user1</NazivKlijenta>
   </ElementZaUpis>
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>0001-01-01T00:00:00</VrijemeGenerisanjaAlarma>
+      <Rizik>0</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-10T12:39:24.5981085+01:00</VremeUpisa>
+    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
+  </ElementZaUpis>
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>0001-01-01T00:00:00</VrijemeGenerisanjaAlarma>
+      <Rizik>0</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-10T12:44:16.5541751+01:00</VremeUpisa>
+    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
+  </ElementZaUpis>
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>2018-11-10T12:45:38.2695799+01:00</VrijemeGenerisanjaAlarma>
+      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
+      <Rizik>1</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-10T12:47:09.457564+01:00</VremeUpisa>
+    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
+  </ElementZaUpis>
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>2018-11-10T13:07:12.2399234+01:00</VrijemeGenerisanjaAlarma>
+      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
+      <Rizik>1</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-10T13:07:29.6002193+01:00</VremeUpisa>
+    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
+  </ElementZaUpis>
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>2018-11-10T13:12:13.9135932+01:00</VrijemeGenerisanjaAlarma>
+      <PorukaOAlarmu>Alarm 4</PorukaOAlarmu>
+      <Rizik>4</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-10T13:12:56.8518208+01:00</VremeUpisa>
+    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
+  </ElementZaUpis>
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>2018-11-10T16:32:03.0726986+01:00</VrijemeGenerisanjaAlarma>
+      <PorukaOAlarmu>Alarm 8</PorukaOAlarmu>
+      <Rizik>8</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-10T16:32:20.4258316+01:00</VremeUpisa>
+    <NazivKlijenta>CN=user1, OU=Grupa2, O=Kompanija1; D499AA1E2E4C4C50A43E3EB9406EB0528649FCB4</NazivKlijenta>
+  </ElementZaUpis>
 </BP>

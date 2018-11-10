@@ -23,10 +23,14 @@ namespace Server
             IPrincipal principal = Thread.CurrentPrincipal;
 
             WindowsIdentity wId = id as WindowsIdentity;
-
+            
 
             if (principal.IsInRole("Trazi"))
             {
+               
+                    Audit.AuthorizationSuccess((principal as CustomPrincipal).Identity.Name, OperationContext.Current.IncomingMessageHeaders.Action);
+               
+                
 
                 Console.WriteLine(String.Format("Authentificated User"));
                 Console.WriteLine(brojBloka.ToString() + " " + brojVektora.ToString() + " " + brojElementa.ToString());
@@ -44,16 +48,10 @@ namespace Server
                 {
                     Console.WriteLine("Alarm: {0}, {1}, {2}", a.PorukaOAlarmu, a.VrijemeGenerisanjaAlarma, a.Rizik);
                     BazaPodataka baza = new BazaPodataka();
-                    if (wId == null)
-                    {
-                        baza.Upisi(a, (principal as CustomPrincipal).VratiIme());
-                    }
-                    else
-                    {
-                        baza.Upisi(a, wId.Name);
-                    }
-
-
+                   
+                   
+                        baza.Upisi(a, (principal as CustomPrincipal).Identity.Name);
+                    
 
                 }
 
@@ -63,6 +61,8 @@ namespace Server
 
             else
             {
+                Audit.AuthorizationFailed((principal as CustomPrincipal).Identity.Name, OperationContext.Current.IncomingMessageHeaders.Action, "Authorization failed.");
+
                 MyException ex = new MyException();
                 ex.Message = "No permision for TRAZI";
                 throw new FaultException<MyException>(ex);

@@ -86,11 +86,11 @@ namespace Client
                 NetTcpBinding binding = new NetTcpBinding();
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
                 /// Use CertManager class to obtain the certificate based on the "srvCertCN" representing the expected service identity.
-                X509Certificate2 srvCert = CertManager.GetCertificateFromStorage(StoreName.TrustedPeople, StoreLocation.LocalMachine, srvCertCN);
+                X509Certificate2 srvCert = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, srvCertCN);
                 EndpointAddress address1 = new EndpointAddress(new Uri("net.tcp://localhost:9999/Receiver"),
                                           new X509CertificateEndpointIdentity(srvCert));
 
-
+                //192.168.137.27
                 try
                 {
                     using (WCFClient proxy = new WCFClient(binding, address1))

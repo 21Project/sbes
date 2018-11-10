@@ -1,0 +1,11 @@
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\obj\Debug\Client.csproj.CoreCompileInputs.cache
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\obj\Debug\Client.csprojResolveAssemblyReference.cache
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\bin\Debug\Client.exe.config
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\bin\Debug\Client.exe
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\bin\Debug\Client.pdb
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\bin\Debug\Common.dll
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\bin\Debug\Manager.dll
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\bin\Debug\Common.pdb
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\bin\Debug\Manager.pdb
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\obj\Debug\Client.exe
+C:\Users\Marija\Desktop\New folder (3)\sbes\Client\obj\Debug\Client.pdb
