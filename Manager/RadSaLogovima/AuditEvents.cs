@@ -30,7 +30,7 @@ namespace Manager
                 {
                     if (resourceManager == null)
                     {
-                        resourceManager = new ResourceManager(typeof(AuditEventsFile).FullName, Assembly.GetExecutingAssembly());
+                        resourceManager = new ResourceManager(typeof(RadSaLogovima.AuditEventsFile).FullName, Assembly.GetExecutingAssembly());
                     }
 
                     return resourceManager;

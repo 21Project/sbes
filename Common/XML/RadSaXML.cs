@@ -13,24 +13,26 @@ namespace Common
         public void NapraviXML()
         {
             XmlSerializer xml = new XmlSerializer(typeof(List<GrupaPermisija>), new XmlRootAttribute("GP"));
-
-            List<GrupaPermisija> lista = new List<GrupaPermisija>()
+            if (!File.Exists(@"../../../GrupeIPermisije.xml"))
             {
-               new GrupaPermisija("Grupa1",new List<string>()),
-               new GrupaPermisija("Grupa2",new List<string>(){"Trazi","Modifikuj"}),
-               new GrupaPermisija("Grupa3",new List<string>(){"Modifikuj"}),
-               new GrupaPermisija("Grupa4",new List<string>()),
-               new GrupaPermisija("Grupa5",new List<string>()),
-               new GrupaPermisija("Grupa6",new List<string>(){"Trazi","Modifikuj"}),
-               new GrupaPermisija("Grupa7",new List<string>(){"Modifikuj"}),
-               new GrupaPermisija("Grupa8",new List<string>()),
-               new GrupaPermisija("Grupa9",new List<string>(){"Trazi","Modifikuj"}),
-               new GrupaPermisija("Grupa10",new List<string>(){"Trazi"})
-        };
+                List<GrupaPermisija> lista = new List<GrupaPermisija>()
+                {
+                   new GrupaPermisija("Grupa1",new List<string>()),
+                   new GrupaPermisija("Grupa2",new List<string>(){"Trazi","Modifikuj"}),
+                   new GrupaPermisija("Grupa3",new List<string>(){"Modifikuj"}),
+                   new GrupaPermisija("Grupa4",new List<string>()),
+                   new GrupaPermisija("Grupa5",new List<string>()),
+                   new GrupaPermisija("Grupa6",new List<string>(){"Trazi","Modifikuj"}),
+                   new GrupaPermisija("Grupa7",new List<string>(){"Modifikuj"}),
+                   new GrupaPermisija("Grupa8",new List<string>()),
+                   new GrupaPermisija("Grupa9",new List<string>(){"Trazi","Modifikuj"}),
+                   new GrupaPermisija("Grupa10",new List<string>(){"Trazi"})
+                };
 
-            using (TextWriter write = new StreamWriter(@"../../../GrupeIPermisije.xml"))
-            {
-                xml.Serialize(write, lista);
+                using (TextWriter write = new StreamWriter(@"../../../GrupeIPermisije.xml"))
+                {
+                    xml.Serialize(write, lista);
+                }
             }
         }
 
@@ -71,12 +73,9 @@ namespace Common
                 {
                     xml.Serialize(write, lista);
                 }
-
-
             }
             else
             {
-
                 lista.Add(el);
                 using (TextWriter write = new StreamWriter(@"../../../BazaPodataka.xml"))
                 {
@@ -110,24 +109,27 @@ namespace Common
 
         public void NapraviXMLRecenica()
         {
+            
             XmlSerializer xml = new XmlSerializer(typeof(List<string>), new XmlRootAttribute("Poruke"));
-
-            List<string> lista = new List<string>();
-            lista.Add("Alarm 1");
-            lista.Add("Alarm 2");
-            lista.Add("Alarm 3");
-            lista.Add("Alarm 4");
-            lista.Add("Alarm 5");
-            lista.Add("Alarm 6");
-            lista.Add("Alarm 7");
-            lista.Add("Alarm 8");
-            lista.Add("Alarm 9");
-            lista.Add("Alarm 10");
-
-
-            using (TextWriter write = new StreamWriter(@"../../../PorukeAlarmi.xml"))
+            if (!File.Exists(@"../../../PorukeAlarmi.xml"))
             {
-                xml.Serialize(write, lista);
+                List<string> lista = new List<string>();
+                lista.Add("Alarm 1");
+                lista.Add("Alarm 2");
+                lista.Add("Alarm 3");
+                lista.Add("Alarm 4");
+                lista.Add("Alarm 5");
+                lista.Add("Alarm 6");
+                lista.Add("Alarm 7");
+                lista.Add("Alarm 8");
+                lista.Add("Alarm 9");
+                lista.Add("Alarm 10");
+
+
+                using (TextWriter write = new StreamWriter(@"../../../PorukeAlarmi.xml"))
+                {
+                    xml.Serialize(write, lista);
+                }
             }
         }
 

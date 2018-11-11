@@ -28,11 +28,8 @@ namespace Manager
 
             X509Certificate2Collection certCollection = store.Certificates.Find(X509FindType.FindBySubjectName, subjectName, true);
 
-            /// Check whether the subjectName of the certificate is exactly the same as the given "subjectName"
             foreach (X509Certificate2 c in certCollection)
             {
-                
-				
 				if (c.SubjectName.Name.Contains(string.Format("CN={0}", subjectName)))
                 {
 					
@@ -53,12 +50,9 @@ namespace Manager
         {
             X509Certificate2 certificate = null;
 
-            ///In order to create .pfx file, access to a protected .pvk file will be required.
-            ///For security reasons, password must not be kept as string. .NET class SecureString provides a confidentiality of a plaintext
             Console.Write("Insert password for the private key: ");
             string pwd = Console.ReadLine();
 
-            ///Convert string to SecureString
             SecureString secPwd = new SecureString();
             foreach (char c in pwd)
             {
@@ -66,7 +60,6 @@ namespace Manager
             }
             pwd = String.Empty;
 
-            /// try-catch necessary if either the speficied file doesn't exist or password is incorrect
             try
             {
                 certificate = new X509Certificate2(fileName, secPwd);
@@ -79,55 +72,24 @@ namespace Manager
             return certificate;
         }
 
+        public static X509Certificate2 GetCertificate(IIdentity identity)
+        {
+            try
+            {
+                // X509Identity is an internal class, so we cannot directly access it
+                Type x509IdentityType = identity.GetType();
 
-        //public static X509Certificate2 GetCertificate(IIdentity identity)
-        //{
-        //    try
-        //    {
-        //        // X509Identity is an internal class, so we cannot directly access it
-        //        Type x509IdentityType = identity.GetType();
+                // The certificate is stored inside a private field of this class
+                FieldInfo certificateField = x509IdentityType.GetField("certificate", BindingFlags.Instance | BindingFlags.NonPublic);
 
-        //        // The certificate is stored inside a private field of this class
-        //        FieldInfo certificateField = x509IdentityType.GetField("certificate", BindingFlags.Instance | BindingFlags.NonPublic);
-
-        //        return (X509Certificate2)certificateField.GetValue(identity);
-        //    }
-        //    catch (Exception)
-        //    {
-        //        return null;
-        //    }
-        //}
+                return (X509Certificate2)certificateField.GetValue(identity);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
 
 
-  //      public static string GetGroupCrt(X509Certificate2 cert)
-		//{
-		//	//string clCertCN = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
-		//	//X509Certificate2 cert = GetCertificateFromStorage(StoreName.TrustedPeople, StoreLocation.LocalMachine, name);
-			
-		//	string[] s = cert.SubjectName.Name.Split(',');
-		//	string[] s1 = s[1].Split('=');
-
-		//	return s1[1];
-
-		//}
-		//public static bool IsInRoleCer(string grupa)
-		//{
-		//	//string grupa = GetGroupCrt();
-		//	RadSaXML r = new RadSaXML();
-		//	List<GrupaPermisija> lista = r.CitajIzXML();
-
-		//	foreach(GrupaPermisija g in lista)
-		//	{
-		//		if(g.NazivGrupe == grupa)
-		//		{
-		//			if (g.Permisije.Contains("Trazi"))
-		//			{
-		//				return true;
-		//			}
-		//		}
-		//	}
-
-		//	return false;
-		//}
     }
 }

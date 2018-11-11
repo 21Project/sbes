@@ -10,13 +10,10 @@ using System.Threading.Tasks;
 
 namespace Manager
 {
-    //Enkapsulira podatke o ovlascenjima autentifikovanog korisnika
-    //Metoda IsInRole proverava da li clanovi grupe(role) imaju ovlascenja za izvrsavanje
-    //, IDisposable
+  
 
     public class CustomPrincipal : IPrincipal
     {
-        //private WindowsIdentity identity = null;
         private IIdentity identity;
 
         public IIdentity Identity
@@ -26,15 +23,6 @@ namespace Manager
                 return this.identity;
             }
         }
-
-        // private IIdentity identitet = null;
-        //public IIdentity Identitet
-        //{
-        //    get
-        //    {
-        //        return this.identitet;
-        //    }
-        //}
 
         private Dictionary<string, string[]> roles = new Dictionary<string, string[]>();
         RadSaXML r = new RadSaXML();
@@ -50,15 +38,11 @@ namespace Manager
                 string groupName = Formatter.ParseName(name.ToString());
 
                 List<GrupaPermisija> lista = r.CitajIzXML();
-                //string[] permisije = new string[] { "permisija1" };
+                
                 foreach (GrupaPermisija g in lista)
                 {
                     if (g.NazivGrupe == groupName)
                     {
-                        //if(g.Permisije.Count == 0)
-                        //{
-
-                        //}
                         if (!roles.ContainsKey(groupName))
                         {
                             roles.Add(groupName, g.Permisije.ToArray());
@@ -67,10 +51,6 @@ namespace Manager
                     }
                 }
 
-                //if (!roles.ContainsKey(groupName))
-                //{
-                //    roles.Add(groupName, permisije);
-                //}
             }
         }
 
@@ -107,18 +87,6 @@ namespace Manager
 
         }
 
-
-       
-
-        //public void Dispose()
-        //{
-        //    if (identity != null)
-        //    {
-        //        this.identity.Dispose();
-        //        identity = null;
-        //    }
-        //}
-
         public bool IsInRole(string role)
         {
             bool IsAuthz = false;
@@ -134,11 +102,5 @@ namespace Manager
             return IsAuthz;
         }
 
-        //public string VratiIme()
-        //{
-        //    string[] ss = identitet.Name.Split(',');
-        //    string[] s = ss[0].Trim().Split('=');
-        //    return s[1].Trim();
-        //}
     }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Server
 {
-    public class BazaPodataka : IBazaPodataka
+    public  class BazaPodataka : IBazaPodataka
     {
-        public void Upisi(Alarm a, string imeKlijenta)
+        public  void Upisi(Alarm a, string imeKlijenta)
         {
             DateTime x = DateTime.Now;
             string date = x.ToString();

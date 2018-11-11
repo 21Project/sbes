@@ -27,5 +27,19 @@ namespace Manager
                 return winLogonName;
             }
         }
+
+        public static string VratiIme(string ime)
+        {
+            if(ime.Contains(";"))
+            {
+                string[] ss = ime.Split(';');
+                return ss[0];
+            }else
+            {
+                return ime;
+            }
+            
+
+        }
     }
 }

@@ -23,17 +23,13 @@ namespace Server
             IPrincipal principal = Thread.CurrentPrincipal;
 
             WindowsIdentity wId = id as WindowsIdentity;
-            
 
             if (principal.IsInRole("Trazi"))
             {
                
-                    Audit.AuthorizationSuccess((principal as CustomPrincipal).Identity.Name, OperationContext.Current.IncomingMessageHeaders.Action);
-               
-                
+                Audit.AuthorizationSuccess(Formatter.VratiIme((principal as CustomPrincipal).Identity.Name), OperationContext.Current.IncomingMessageHeaders.Action);
 
-                Console.WriteLine(String.Format("Authentificated User"));
-                Console.WriteLine(brojBloka.ToString() + " " + brojVektora.ToString() + " " + brojElementa.ToString());
+                Console.WriteLine("Klijent je generisao brojeve: "+ brojBloka.ToString() + " " + brojVektora.ToString() + " " + brojElementa.ToString());
                 Dictionary<int, Blok> blok = InterniModel.blokovi;
                 Blok b = blok[brojBloka];
                 Dictionary<int, Vektor> vektor = b.GetVektori;
@@ -42,35 +38,30 @@ namespace Server
                 Alarm a = alarm[brojElementa];
                 if (a == null)
                 {
-                    Console.WriteLine("Alarm je null.");
+                    Console.WriteLine("Na zadatoj poziciji nema alarma.");
                 }
                 else
                 {
-                    Console.WriteLine("Alarm: {0}, {1}, {2}", a.PorukaOAlarmu, a.VrijemeGenerisanjaAlarma, a.Rizik);
-                    BazaPodataka baza = new BazaPodataka();
-                   
-                   
-                        baza.Upisi(a, (principal as CustomPrincipal).Identity.Name);
-                    
 
+                    Console.WriteLine("\n-------------------------------------------");
+                    Console.WriteLine("PRONADJENI ALARM: \nPoruka: {0} \nVreme generisanja : {1} \nRizik: {2}", a.PorukaOAlarmu, a.VrijemeGenerisanjaAlarma, a.Rizik);
+                    Console.WriteLine("-------------------------------------------\n");
+                    new BazaPodataka().Upisi(a, Formatter.VratiIme((principal as CustomPrincipal).Identity.Name));
+                    ret = true;
                 }
-
-
-
+                
             }
 
             else
             {
-                Audit.AuthorizationFailed((principal as CustomPrincipal).Identity.Name, OperationContext.Current.IncomingMessageHeaders.Action, "Authorization failed.");
+                Audit.AuthorizationFailed(Formatter.VratiIme((principal as CustomPrincipal).Identity.Name), OperationContext.Current.IncomingMessageHeaders.Action, "Authorization failed.");
 
                 MyException ex = new MyException();
-                ex.Message = "No permision for TRAZI";
+                ex.Message = "Nemate pravo 'Trazi'!";
                 throw new FaultException<MyException>(ex);
 
             }
-
-
-            Console.WriteLine("Ovo je test metoda !!!!!");
+            
             return ret;
         }
     }

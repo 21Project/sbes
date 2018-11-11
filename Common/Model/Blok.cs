@@ -15,7 +15,7 @@ namespace Common
             Vektor v = new Vektor();
             v.NapraviVektor();
             vektori = new Dictionary<int, Vektor>();
-            for (int i = 0; i < 100; i++)
+            for (int i = 0; i < VelicinaModela.BrojVektora; i++)
             {
                 vektori.Add(i, new Vektor());
             }

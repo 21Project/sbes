@@ -20,14 +20,14 @@ namespace Client
         public WCFClient(NetTcpBinding binding, EndpointAddress address)
             : base(binding, address)
         {
-            /// cltCertCN.SubjectName should be set to the client's username. .NET WindowsIdentity class provides information about Windows user running the given process
+            
             string cltCertCN = Manager.Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
 
             this.Credentials.ServiceCertificate.Authentication.CertificateValidationMode = System.ServiceModel.Security.X509CertificateValidationMode.Custom;
             this.Credentials.ServiceCertificate.Authentication.CustomCertificateValidator = new ClientCertValidator();
             this.Credentials.ServiceCertificate.Authentication.RevocationMode = X509RevocationMode.NoCheck;
 
-            /// Set appropriate client's certificate on the channel. Use CertManager class to obtain the certificate based on the "cltCertCN"
+            
             try
             {
                 this.Credentials.ClientCertificate.Certificate = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, cltCertCN);
@@ -35,14 +35,11 @@ namespace Client
             }
             catch (FaultException<MyException> ex)
             {
-                Console.WriteLine("ERROR = {0}", ex.Detail.Message);
+                Console.WriteLine("{0}", ex.Detail.Message);
             }
+            
         }
-
-       
-
         
-
         public void Dispose()
         {
             if (factory != null)
@@ -62,13 +59,9 @@ namespace Client
             }
 			catch (FaultException<MyException> ex)
 			{
-				Console.WriteLine("[TestCommunication] ERROR = {0}", ex.Detail.Message);
+				Console.WriteLine("{0}", ex.Detail.Message);
 			}
-			//catch (SecurityAccessDeniedException e)
-			//{
-			//    Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
-			//}
-
+			
 			return ret;
         }
     }

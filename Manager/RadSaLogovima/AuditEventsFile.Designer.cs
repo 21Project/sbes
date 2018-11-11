@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Manager {
+namespace Manager.RadSaLogovima {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Manager {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Manager.AuditEventsFile", typeof(AuditEventsFile).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Manager.RadSaLogovima.AuditEventsFile", typeof(AuditEventsFile).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;

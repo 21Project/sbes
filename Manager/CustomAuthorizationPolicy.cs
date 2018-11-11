@@ -6,6 +6,7 @@ using System.IdentityModel.Policy;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Principal;
+using System.ServiceModel;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -50,6 +51,7 @@ namespace Manager
             IList<IIdentity> identities = list as IList<IIdentity>;
             if (list == null || identities.Count <= 0)
             {
+              
                 return false;
             }
 
@@ -70,13 +72,22 @@ namespace Manager
                 }
                 else
                 {
-                    X509Certificate2 certificate = DobaviSertifikat.GetCertificate(identity);
+                    X509Certificate2 certificate = CertManager.GetCertificate(identity);
+                    if(certificate == null)
+                    {
+                        Audit.AuthenticationFailed(Formatter.VratiIme(identity.Name), OperationContext.Current.IncomingMessageHeaders.Action, "Authentication failed.");
+                    }else
+                    {
+                        Audit.AuthenticationSuccess(Formatter.VratiIme(identity.Name));
+                    }
                     principal = new CustomPrincipal(certificate, identity);
                 }
 
                 return principal;
             }
         }
+
+
 
 
     }

@@ -12,17 +12,17 @@ namespace Common
         private Random r = new Random();
      
         static List<string> li = new RadSaXML().CitajPoruke();
-        private List<string> li1 = VratiAlarme();
+       // private List<string> li1 = VratiAlarme();
         public void NapraviVektor()
         {
             elementi = new Dictionary<int, Alarm>();
             int x;
-            for (int i = 0; i < 10000; i++)
+            for (int i = 0; i < VelicinaModela.BrojElemenata; i++)
             {
                 if (i % 2 == 0)
                 {
                     x = r.Next(1, 10);
-                    elementi.Add(i, new Alarm(DateTime.Now, li1[x], x));
+                    elementi.Add(i, new Alarm(DateTime.Now, li[x-1], x));
                 }
                 else
                 {
@@ -36,15 +36,15 @@ namespace Common
             get { return elementi; }
         }
 
-        public static List<string> VratiAlarme()
-        {
-            List<string> pomLi = new List<string>();
-            pomLi.Add("bla");
-            foreach(string s in li)
-            {
-                pomLi.Add(s);
-            }
-            return pomLi;
-        }
+        //public static List<string> VratiAlarme()
+        //{
+        //    List<string> pomLi = new List<string>();
+        //    pomLi.Add("Alarm0");
+        //    foreach(string s in li)
+        //    {
+        //        pomLi.Add(s);
+        //    }
+        //    return pomLi;
+        //}
     }
 }

@@ -10,14 +10,13 @@ namespace Manager
     public class Audit : IDisposable
     {
         private static EventLog customLog = null;
-        const string SourceName = "Application";
-        const string LogName = "Application";          //naziv naseg Log fajla u Windows Event Log
+        const string SourceName = "Projekat21";
+        const string LogName = "21ProjectAudit";          
 
         static Audit()
         {
             try
             {
-                //pravi se customLog handle
                 if (!EventLog.SourceExists(SourceName))
                 {
                     EventLog.CreateEventSource(SourceName, LogName);
@@ -25,10 +24,10 @@ namespace Manager
 
                 customLog = new EventLog(LogName, Environment.MachineName, SourceName);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 customLog = null;
-                Console.WriteLine("Error while trying to create log handle. Error = {0}", e.Message);
+                Console.WriteLine("Greska pri kreiranju log handle-a!");
             }
         }
 
@@ -36,24 +35,22 @@ namespace Manager
         {
             if (customLog != null)
             {
-                //poziva metodu AuditEvents da bi ispisao poruku u Log fajl
                 customLog.WriteEntry(string.Format(AuditEvents.UserAuthenticationSuccess, userName), EventLogEntryType.SuccessAudit);
             }
             else
             {
-                throw new ArgumentException(string.Format("Error while trying to write event with id {0} to event log", (int)AuditEventTypes.UserAuthenticationSuccess));
+                throw new ArgumentException(string.Format("Greska prilikom upisa dogadjaja sa id-jem {0} u event log", (int)AuditEventTypes.UserAuthenticationSuccess));
             }
         }
         public static void AuthenticationFailed(string userName, string serviceName, string reason)
         {
             if (customLog != null)
             {
-                //poziva metodu AuditEvents da bi ispisao poruku u Log fajl
                 customLog.WriteEntry(string.Format(AuditEvents.UserAuthenticationFailed, userName, serviceName, reason), EventLogEntryType.Error);
             }
             else
             {
-                throw new ArgumentException(string.Format("Error while trying to write event with id {0} to event log", (int)AuditEventTypes.UserAuthenticationFailed));
+                throw new ArgumentException(string.Format("Greska prilikom upisa dogadjaja sa id-jem {0} u event log", (int)AuditEventTypes.UserAuthenticationFailed));
             }
         }
 
@@ -61,12 +58,11 @@ namespace Manager
         {
             if (customLog != null)
             {
-                //poziva metodu AuditEvents da bi ispisao poruku u Log fajl
                 customLog.WriteEntry(string.Format(AuditEvents.UserAuthorizationSuccess, userName, serviceName), EventLogEntryType.SuccessAudit);
             }
             else
             {
-                throw new ArgumentException(string.Format("Error while trying to write event with id {0} to event log", (int)AuditEventTypes.UserAuthorizationSuccess));
+                throw new ArgumentException(string.Format("Greska prilikom upisa dogadjaja sa id-jem {0} u event log", (int)AuditEventTypes.UserAuthorizationSuccess));
             }
         }
 
@@ -74,12 +70,11 @@ namespace Manager
         {
             if (customLog != null)
             {
-                //poziva metodu AuditEvents da bi ispisao poruku u Log fajl
                 customLog.WriteEntry(string.Format(AuditEvents.UserAuthorizationFailed, userName, serviceName, reason), EventLogEntryType.Error);
             }
             else
             {
-                throw new ArgumentException(string.Format("Error while trying to write event with id {0} to event log", (int)AuditEventTypes.UserAuthorizationFailed));
+                throw new ArgumentException(string.Format("Greska prilikom upisa dogadjaja sa id-jem {0} u event log", (int)AuditEventTypes.UserAuthorizationFailed));
             }
         }
 

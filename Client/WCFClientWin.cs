@@ -26,15 +26,11 @@ namespace Client
 			{
 				ret = factory.GenerisiZahtjev(brojBloka, brojVektora, brojElementa);
 			}
-			//catch (SecurityAccessDeniedException e)
-			//{
-			//	Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
-			//}
 			catch(FaultException<MyException> ex)
 			{
-				Console.WriteLine("[TestCommunication] ERROR = {0}", ex.Detail.Message);
+				Console.WriteLine("{0}", ex.Detail.Message);
 			}
-			//throw new NotImplementedException();
+		
 			return ret;
 		}
 

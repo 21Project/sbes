@@ -43,21 +43,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Audit.cs" />
-    <Compile Include="AuditEvents.cs" />
-    <Compile Include="AuditEventsFile.Designer.cs">
+    <Compile Include="RadSaLogovima\Audit.cs" />
+    <Compile Include="RadSaLogovima\AuditEvents.cs" />
+    <Compile Include="RadSaLogovima\AuditEventsFile.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AuditEventsFile.resx</DependentUpon>
     </Compile>
-    <Compile Include="CertManager.cs" />
-    <Compile Include="ClientCertValidator.cs" />
+    <Compile Include="RadSaSertifikatima\CertManager.cs" />
+    <Compile Include="RadSaSertifikatima\ClientCertValidator.cs" />
     <Compile Include="CustomAuthorizationPolicy.cs" />
     <Compile Include="CustomPrincipal.cs" />
-    <Compile Include="DigitalSignature.cs" />
     <Compile Include="Formatter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceCertValidator.cs" />
+    <Compile Include="RadSaSertifikatima\ServiceCertValidator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Common\Common.csproj">
@@ -66,7 +65,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="AuditEventsFile.resx">
+    <EmbeddedResource Include="RadSaLogovima\AuditEventsFile.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>AuditEventsFile.Designer.cs</LastGenOutput>
     </EmbeddedResource>

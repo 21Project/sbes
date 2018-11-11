@@ -42,18 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alarm.cs" />
-    <Compile Include="Blok.cs" />
-    <Compile Include="DobaviSertifikat.cs" />
-    <Compile Include="ElementZaUpis.cs" />
-    <Compile Include="GrupaPermisija.cs" />
+    <Compile Include="Model\Alarm.cs" />
+    <Compile Include="Model\Blok.cs" />
+    <Compile Include="Model\InterniModel.cs" />
+    <Compile Include="VelicinaModela.cs" />
+    <Compile Include="XML\ElementZaUpis.cs" />
+    <Compile Include="XML\GrupaPermisija.cs" />
     <Compile Include="GenerisanjeIndeksa.cs" />
     <Compile Include="IBazaPodataka.cs" />
     <Compile Include="IZahtjev.cs" />
     <Compile Include="MyException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RadSaXML.cs" />
-    <Compile Include="Vektor.cs" />
+    <Compile Include="XML\RadSaXML.cs" />
+    <Compile Include="Model\Vektor.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

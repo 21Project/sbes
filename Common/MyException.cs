@@ -7,19 +7,14 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-	//[Serializable]
+	
 	[DataContract]
 	public class MyException
 	{
 		public MyException()
 		{
 		}
-
-		//public MyException(string m) : base(m)
-		//{
-		//	Message = m;
-		//}
-
+        
 		[DataMember]
 		public string Message { get; set; }
 	}

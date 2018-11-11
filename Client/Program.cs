@@ -17,8 +17,8 @@ namespace Client
     {
         static void Main(string[] args)
         {
-			Console.ReadLine();
-            Console.WriteLine("Client is alive....");
+
+            string ip = "192.168.137.12";
             int unos;
             do
             {
@@ -32,8 +32,8 @@ namespace Client
 
             if(unos == 1)
             {
-                //10.1.212.171, 10.1.212.167
-                string adresa = "net.tcp://localhost:4000/IZahtjev";
+                
+                string adresa = "net.tcp://" + ip + ":4000/IZahtjev";
                 NetTcpBinding binding = new NetTcpBinding();
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
 
@@ -47,50 +47,43 @@ namespace Client
                             GenerisanjeIndeksa g = new GenerisanjeIndeksa();
                             List<int> lista = g.GenerisiIndekse();
 
-                            proxy.GenerisiZahtjev(lista[0], lista[1], lista[2]);
+                            bool ret = proxy.GenerisiZahtjev(lista[0], lista[1], lista[2]);
+                            if (ret)
+                            {
+                                Console.WriteLine("Alarm na poziciji {0},{1},{2} je pronadjen!", lista[0], lista[1], lista[2]);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Alarm na poziciji {0},{1},{2} nije pronadjen!", lista[0], lista[1], lista[2]);
+                            }
                         }
                         catch (FaultException<MyException> ex)
                         {
-                            Console.WriteLine("[TestCommunication] ERROR = {0}", ex.Detail.Message);
+                            Console.WriteLine("{0}", ex.Detail.Message);
                         }
-                        catch (SecurityNegotiationException e)
+                        catch (SecurityNegotiationException)
                         {
-                            Console.WriteLine("ERROR1 {0}", e.Message);
+                            Console.WriteLine("Niste autentifikovani!");
                         }
-
-                        //catch (SecurityAccessDeniedException e)
-                        //{
-                        //	Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
-                        //}
-                        //proxy.GenerisiZahtjev(2, 2, 2, new Alarm(DateTime.Now, "bzv", 2));
                     }
                 }
-                catch (CommunicationException e)
+                catch (CommunicationException)
                 {
-                    Console.WriteLine(e.Message);
+                   
                 }
-                //catch (SecurityAccessDeniedException e)
-                //{
-                //	Console.WriteLine("[TestCommunication] ERROR = {0}", e.Message);
-                //}
-                //proxy.GenerisiZahtjev(2, 2, 2, new Alarm(DateTime.Now, "bzv", 2));
-            
-
 			}
             else
             {
                 string srvCertCN = "wcfservice";
 
-                //TrustedPeople
-
                 NetTcpBinding binding = new NetTcpBinding();
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
-                /// Use CertManager class to obtain the certificate based on the "srvCertCN" representing the expected service identity.
-                X509Certificate2 srvCert = CertManager.GetCertificateFromStorage(StoreName.My, StoreLocation.LocalMachine, srvCertCN);
-                EndpointAddress address1 = new EndpointAddress(new Uri("net.tcp://localhost:9999/Receiver"),
+              
+                X509Certificate2 srvCert = CertManager.GetCertificateFromStorage(StoreName.TrustedPeople, StoreLocation.LocalMachine, srvCertCN);
+                EndpointAddress address1 = new EndpointAddress(new Uri("net.tcp://" + ip + ":9999/IZahtjev"),
                                           new X509CertificateEndpointIdentity(srvCert));
 
-                //192.168.137.27
+                
                 try
                 {
                     using (WCFClient proxy = new WCFClient(binding, address1))
@@ -98,27 +91,32 @@ namespace Client
                         GenerisanjeIndeksa g = new GenerisanjeIndeksa();
                         List<int> lista = g.GenerisiIndekse();
 
-                        proxy.GenerisiZahtjev(lista[0], lista[1], lista[2]);
-                        Console.WriteLine("TestCommunication() finished. Press <enter> to continue ...");
-                        Console.ReadLine();
+                        bool ret = proxy.GenerisiZahtjev(lista[0], lista[1], lista[2]);
+                        if(ret)
+                        {
+                            Console.WriteLine("Alarm na poziciji {0},{1},{2} je pronadjen!",lista[0],lista[1],lista[2]);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Alarm na poziciji {0},{1},{2} nije pronadjen!", lista[0], lista[1], lista[2]);
+                        }
+                      
                     }
                 }
                 catch (NullReferenceException)
                 {
-                    Console.WriteLine("Zavrsena komunikacija!");
+                    Console.WriteLine("Neuspela komunikacija!");
                 }
-
+                catch (InvalidOperationException)
+                {
+                    Console.WriteLine("Invalid operation: Nemate sertifikat");
+                }
+                catch (CommunicationObjectFaultedException)
+                {
+                    Console.WriteLine("Nemate sertifikat!");
+                }
             }
-            /// Define the expected service certificate. It is required to establish cmmunication using certificates.
-
-
-            //string adresa = "net.tcp://localhost:4000/IZahtjev";
-
-
-
-            //IZahtjev factory = new ChannelFactory<IZahtjev>(binding, adresa).CreateChannel();
-            //factory.GenerisiZahtjev(2, 2, 2, new Alarm(DateTime.Now, "bzv", 2));
-
+          
             Console.ReadKey();
         }
     }
