@@ -16,9 +16,9 @@ namespace Server
 {
     public class Zahtjev : IZahtjev
     {
-        public bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa)
+        public int GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa)
         {
-            bool ret = false;
+            int ret = -1;
             IIdentity id = Thread.CurrentPrincipal.Identity;
             IPrincipal principal = Thread.CurrentPrincipal;
 
@@ -29,6 +29,7 @@ namespace Server
                
                 Audit.AuthorizationSuccess(Formatter.VratiIme((principal as CustomPrincipal).Identity.Name), OperationContext.Current.IncomingMessageHeaders.Action);
 
+                Console.WriteLine("\n-------------------------------------------");
                 Console.WriteLine("Klijent je generisao brojeve: "+ brojBloka.ToString() + " " + brojVektora.ToString() + " " + brojElementa.ToString());
                 Dictionary<int, Blok> blok = InterniModel.blokovi;
                 Blok b = blok[brojBloka];
@@ -39,6 +40,8 @@ namespace Server
                 if (a == null)
                 {
                     Console.WriteLine("Na zadatoj poziciji nema alarma.");
+                    Console.WriteLine("-------------------------------------------\n");
+                    ret = 0;
                 }
                 else
                 {
@@ -47,7 +50,7 @@ namespace Server
                     Console.WriteLine("PRONADJENI ALARM: \nPoruka: {0} \nVreme generisanja : {1} \nRizik: {2}", a.PorukaOAlarmu, a.VrijemeGenerisanjaAlarma, a.Rizik);
                     Console.WriteLine("-------------------------------------------\n");
                     new BazaPodataka().Upisi(a, Formatter.VratiIme((principal as CustomPrincipal).Identity.Name));
-                    ret = true;
+                    ret = 1;
                 }
                 
             }

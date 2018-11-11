@@ -1,0 +1,8 @@
+winhttpcertcfg -g -c LOCAL_MACHINE\My -s user1 -a user1
+winhttpcertcfg -g -c LOCAL_MACHINE\My -s user2 -a user2
+winhttpcertcfg -g -c LOCAL_MACHINE\My -s user5 -a user5
+winhttpcertcfg -g -c LOCAL_MACHINE\My -s user6 -a user6
+winhttpcertcfg -g -c LOCAL_MACHINE\My -s user7 -a user7
+winhttpcertcfg -g -c LOCAL_MACHINE\My -s wcfservice -a wcfservice
+
+PowerShell: New-EventLog -Source "Projekat21" -LogName "21ProjectAudit" -MessageResourceFile "C:\Users\Barbara\Desktop\Projekat\sbes\Server\bin\Debug\Server.dll"

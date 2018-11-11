@@ -18,7 +18,7 @@ namespace Client
         static void Main(string[] args)
         {
 
-            string ip = "192.168.137.12";
+            string ip = "192.168.43.60";
             int unos;
             do
             {
@@ -47,12 +47,12 @@ namespace Client
                             GenerisanjeIndeksa g = new GenerisanjeIndeksa();
                             List<int> lista = g.GenerisiIndekse();
 
-                            bool ret = proxy.GenerisiZahtjev(lista[0], lista[1], lista[2]);
-                            if (ret)
+                            int ret = proxy.GenerisiZahtjev(lista[0], lista[1], lista[2]);
+                            if (ret == 1)
                             {
                                 Console.WriteLine("Alarm na poziciji {0},{1},{2} je pronadjen!", lista[0], lista[1], lista[2]);
                             }
-                            else
+                            else if(ret == 0)
                             {
                                 Console.WriteLine("Alarm na poziciji {0},{1},{2} nije pronadjen!", lista[0], lista[1], lista[2]);
                             }
@@ -91,16 +91,16 @@ namespace Client
                         GenerisanjeIndeksa g = new GenerisanjeIndeksa();
                         List<int> lista = g.GenerisiIndekse();
 
-                        bool ret = proxy.GenerisiZahtjev(lista[0], lista[1], lista[2]);
-                        if(ret)
+                        int ret = proxy.GenerisiZahtjev(lista[0], lista[1], lista[2]);
+                        if (ret == 1)
                         {
-                            Console.WriteLine("Alarm na poziciji {0},{1},{2} je pronadjen!",lista[0],lista[1],lista[2]);
+                            Console.WriteLine("Alarm na poziciji {0},{1},{2} je pronadjen!", lista[0], lista[1], lista[2]);
                         }
-                        else
+                        else if (ret == 0)
                         {
                             Console.WriteLine("Alarm na poziciji {0},{1},{2} nije pronadjen!", lista[0], lista[1], lista[2]);
                         }
-                      
+
                     }
                 }
                 catch (NullReferenceException)

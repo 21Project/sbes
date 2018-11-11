@@ -12,6 +12,6 @@ namespace Common
     {
         [OperationContract]
 		[FaultContract(typeof(MyException))]
-        bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa);
+        int GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa);
     }
 }

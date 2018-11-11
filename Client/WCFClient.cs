@@ -50,9 +50,9 @@ namespace Client
             this.Close();
         }
 
-        public bool GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa)
+        public int GenerisiZahtjev(int brojBloka, int brojVektora, int brojElementa)
         {
-			bool ret = false;
+			int ret = -1;
             try
             {
                 ret = factory.GenerisiZahtjev(brojBloka, brojVektora, brojElementa);
