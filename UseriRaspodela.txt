@@ -1,0 +1,18 @@
+Marija: 
+	6 => Sertifikat, Nama ni jedno pravo
+	8 => Windows u Grupi2, ima permisiju
+
+Suzana:
+	2 => Windows u Grupi1,  nema permisiju
+		 Sertifikat, ima permisiju
+	4 => Windows, Ni u jednoj grupi, nema ga server
+	5 => Sertifikat, ima drugo pravo (modifikuj)
+	
+Tamara:
+	1 => Windows, u Grupi2, ima permisiju
+	     Sertifikat, ima permisiju
+	3 => Windows, ni u jednoj grupi, nema permisiju
+	7 => Sertifikat, samo CN
+	
+Barbara:
+	Server

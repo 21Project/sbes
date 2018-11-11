@@ -30,7 +30,7 @@ namespace Server
                 Audit.AuthorizationSuccess(Formatter.VratiIme((principal as CustomPrincipal).Identity.Name), OperationContext.Current.IncomingMessageHeaders.Action);
 
                 Console.WriteLine("\n-------------------------------------------");
-                Console.WriteLine("Klijent je generisao brojeve: "+ brojBloka.ToString() + " " + brojVektora.ToString() + " " + brojElementa.ToString());
+                Console.WriteLine("Klijent je generisao brojeve: "+ brojBloka.ToString() + "," + brojVektora.ToString() + "," + brojElementa.ToString());
                 Dictionary<int, Blok> blok = InterniModel.blokovi;
                 Blok b = blok[brojBloka];
                 Dictionary<int, Vektor> vektor = b.GetVektori;
