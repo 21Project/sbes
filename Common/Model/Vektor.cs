@@ -12,7 +12,7 @@ namespace Common
         private Random r = new Random();
      
         static List<string> li = new RadSaXML().CitajPoruke();
-       // private List<string> li1 = VratiAlarme();
+       
         public void NapraviVektor()
         {
             elementi = new Dictionary<int, Alarm>();
@@ -36,15 +36,6 @@ namespace Common
             get { return elementi; }
         }
 
-        //public static List<string> VratiAlarme()
-        //{
-        //    List<string> pomLi = new List<string>();
-        //    pomLi.Add("Alarm0");
-        //    foreach(string s in li)
-        //    {
-        //        pomLi.Add(s);
-        //    }
-        //    return pomLi;
-        //}
+      
     }
 }

@@ -9,12 +9,11 @@ using System.Xml.Serialization;
 namespace Common
 {
 	[XmlRoot("GP")]
-	[DataContract]
+	
 	public class GrupaPermisija
 	{
-		[DataMember]
 		public string NazivGrupe { get; set; }
-		[DataMember]
+		
 		public List<string> Permisije = new List<string>();
 
 		public GrupaPermisija() { }

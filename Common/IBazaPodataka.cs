@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    [ServiceContract]
+   
     public interface IBazaPodataka
     {
-        [OperationContract]
+       
         void Upisi(Alarm a, string imeKlijenta);
     }
 }

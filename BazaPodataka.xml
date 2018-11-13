@@ -2,126 +2,29 @@
 <BP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <ElementZaUpis>
     <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-09T15:29:29.8648157+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
-      <Rizik>7</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-09T15:29:48.4402022+01:00</VremeUpisa>
-    <NazivKlijenta>P05-26\user2</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-09T15:52:13.9156328+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
-      <Rizik>6</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-09T15:52:20.017398+01:00</VremeUpisa>
-    <NazivKlijenta>user1</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-09T16:47:40.8686432+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
-      <Rizik>8</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-09T16:48:09.1267433+01:00</VremeUpisa>
-    <NazivKlijenta>user1</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-09T17:23:23.3733105+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
-      <Rizik>9</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-09T17:23:46.0550619+01:00</VremeUpisa>
-    <NazivKlijenta>user1</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>0001-01-01T00:00:00</VrijemeGenerisanjaAlarma>
-      <Rizik>0</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-10T12:39:24.5981085+01:00</VremeUpisa>
-    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>0001-01-01T00:00:00</VrijemeGenerisanjaAlarma>
-      <Rizik>0</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-10T12:44:16.5541751+01:00</VremeUpisa>
-    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-10T12:45:38.2695799+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
-      <Rizik>1</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-10T12:47:09.457564+01:00</VremeUpisa>
-    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-10T13:07:12.2399234+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>testPoruka</PorukaOAlarmu>
-      <Rizik>1</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-10T13:07:29.6002193+01:00</VremeUpisa>
-    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-10T13:12:13.9135932+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>Alarm 4</PorukaOAlarmu>
-      <Rizik>4</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-10T13:12:56.8518208+01:00</VremeUpisa>
-    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-10T16:32:03.0726986+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>Alarm 8</PorukaOAlarmu>
-      <Rizik>8</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-10T16:32:20.4258316+01:00</VremeUpisa>
-    <NazivKlijenta>CN=user1, OU=Grupa2, O=Kompanija1; D499AA1E2E4C4C50A43E3EB9406EB0528649FCB4</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-11T11:12:51.733155+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>Alarm 3</PorukaOAlarmu>
-      <Rizik>3</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-11T11:13:07.6672508+01:00</VremeUpisa>
-    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-11T11:51:56.2810785+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>Alarm 3</PorukaOAlarmu>
-      <Rizik>3</Rizik>
-    </Alarm>
-    <VremeUpisa>2018-11-11T11:52:44.4096045+01:00</VremeUpisa>
-    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
-  </ElementZaUpis>
-  <ElementZaUpis>
-    <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-11T13:09:49.1141245+01:00</VrijemeGenerisanjaAlarma>
+      <VrijemeGenerisanjaAlarma>2018-11-13T19:19:14.5124004+01:00</VrijemeGenerisanjaAlarma>
       <PorukaOAlarmu>Alarm 6</PorukaOAlarmu>
       <Rizik>6</Rizik>
     </Alarm>
-    <VremeUpisa>2018-11-11T13:10:06.1534964+01:00</VremeUpisa>
-    <NazivKlijenta>DESKTOP-S1Q9NUJ\user2</NazivKlijenta>
+    <VremeUpisa>2018-11-13T19:20:27.0620017+01:00</VremeUpisa>
+    <NazivKlijenta>CN=user1, OU=Grupa6, O=Kompanija1</NazivKlijenta>
   </ElementZaUpis>
   <ElementZaUpis>
     <Alarm>
-      <VrijemeGenerisanjaAlarma>2018-11-11T13:13:01.9888991+01:00</VrijemeGenerisanjaAlarma>
-      <PorukaOAlarmu>Alarm 1</PorukaOAlarmu>
-      <Rizik>1</Rizik>
+      <VrijemeGenerisanjaAlarma>2018-11-13T19:26:41.3507317+01:00</VrijemeGenerisanjaAlarma>
+      <PorukaOAlarmu>Alarm 2</PorukaOAlarmu>
+      <Rizik>2</Rizik>
     </Alarm>
-    <VremeUpisa>2018-11-11T13:17:28.7346366+01:00</VremeUpisa>
-    <NazivKlijenta>CN=user1, OU=Grupa2, O=Kompanija1; D499AA1E2E4C4C50A43E3EB9406EB0528649FCB4</NazivKlijenta>
+    <VremeUpisa>2018-11-13T19:28:12.6769094+01:00</VremeUpisa>
+    <NazivKlijenta>CN=user2, OU=Grupa9, O=Kompanija2</NazivKlijenta>
+  </ElementZaUpis>
+  <ElementZaUpis>
+    <Alarm>
+      <VrijemeGenerisanjaAlarma>2018-11-13T19:26:41.3447475+01:00</VrijemeGenerisanjaAlarma>
+      <PorukaOAlarmu>Alarm 9</PorukaOAlarmu>
+      <Rizik>9</Rizik>
+    </Alarm>
+    <VremeUpisa>2018-11-13T19:30:53.1570948+01:00</VremeUpisa>
+    <NazivKlijenta>DESKTOP-G29EL7R\user8</NazivKlijenta>
   </ElementZaUpis>
 </BP>

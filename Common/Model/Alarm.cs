@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Common
 {
-    [DataContract]
+   
     public class Alarm
     {
         public Alarm()
@@ -21,11 +21,11 @@ namespace Common
             Rizik = rizik;
         }
 
-        [DataMember]
+      
         public DateTime VrijemeGenerisanjaAlarma { get; set; }
-        [DataMember]
+      
         public string PorukaOAlarmu { get; set; }
-        [DataMember]
+   
         public int Rizik { get; set; }
     }
 }

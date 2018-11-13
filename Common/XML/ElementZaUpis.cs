@@ -9,14 +9,14 @@ using System.Xml.Serialization;
 namespace Common
 {
     [XmlRoot("BP")]
-    [DataContract]
+   
     public class ElementZaUpis
     {
-        [DataMember]
+      
         public Alarm Alarm { get; set; }
-        [DataMember]
+      
         public DateTime VremeUpisa { get; set; }
-        [DataMember]
+     
         public string NazivKlijenta { get; set; }
 
         public ElementZaUpis() { }
