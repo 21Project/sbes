@@ -18,7 +18,7 @@ namespace Client
         static void Main(string[] args)
         {
 
-            string ip = "192.168.43.60";
+            string ip = "192.168.137.12";
             int unos;
             do
             {
@@ -35,6 +35,7 @@ namespace Client
                 
                 string adresa = "net.tcp://" + ip + ":4000/IZahtjev";
                 NetTcpBinding binding = new NetTcpBinding();
+				binding.Security.Mode = SecurityMode.Transport;
                 binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
 
                 try
@@ -77,7 +78,8 @@ namespace Client
                 string srvCertCN = "wcfservice";
 
                 NetTcpBinding binding = new NetTcpBinding();
-                binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
+				binding.Security.Mode = SecurityMode.Transport;
+				binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
               
                 X509Certificate2 srvCert = CertManager.GetCertificateFromStorage(StoreName.TrustedPeople, StoreLocation.LocalMachine, srvCertCN);
                 EndpointAddress address1 = new EndpointAddress(new Uri("net.tcp://" + ip + ":9999/IZahtjev"),
@@ -86,7 +88,7 @@ namespace Client
                 
                 try
                 {
-                    using (WCFClient proxy = new WCFClient(binding, address1))
+                    using (WCFClientCert proxy = new WCFClientCert(binding, address1))
                     {
                         GenerisanjeIndeksa g = new GenerisanjeIndeksa();
                         List<int> lista = g.GenerisiIndekse();
@@ -103,6 +105,10 @@ namespace Client
 
                     }
                 }
+				catch(FaultException<MyException> ex)
+				{
+					Console.WriteLine(ex.Detail.Message);
+				}
                 catch (NullReferenceException)
                 {
                     Console.WriteLine("Neuspela komunikacija!");

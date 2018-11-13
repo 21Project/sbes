@@ -18,14 +18,14 @@ namespace Common
                 List<GrupaPermisija> lista = new List<GrupaPermisija>()
                 {
                    new GrupaPermisija("Grupa1",new List<string>()),
-                   new GrupaPermisija("Grupa2",new List<string>(){"Trazi","Modifikuj"}),
-                   new GrupaPermisija("Grupa3",new List<string>(){"Modifikuj"}),
+                   new GrupaPermisija("Grupa2",new List<string>(){"Trazi"}),
+                   new GrupaPermisija("Grupa3",new List<string>()),
                    new GrupaPermisija("Grupa4",new List<string>()),
                    new GrupaPermisija("Grupa5",new List<string>()),
-                   new GrupaPermisija("Grupa6",new List<string>(){"Trazi","Modifikuj"}),
-                   new GrupaPermisija("Grupa7",new List<string>(){"Modifikuj"}),
+                   new GrupaPermisija("Grupa6",new List<string>(){"Trazi"}),
+                   new GrupaPermisija("Grupa7",new List<string>()),
                    new GrupaPermisija("Grupa8",new List<string>()),
-                   new GrupaPermisija("Grupa9",new List<string>(){"Trazi","Modifikuj"}),
+                   new GrupaPermisija("Grupa9",new List<string>(){"Trazi"}),
                    new GrupaPermisija("Grupa10",new List<string>(){"Trazi"})
                 };
 

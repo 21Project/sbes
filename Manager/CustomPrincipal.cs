@@ -63,7 +63,7 @@ namespace Manager
             if (!clientCert.SubjectName.Name.Contains(','))
             {
                 MyException e = new MyException();
-                e.Message = "Nemate pravo da izvrsite operaciju.";
+                e.Message = "Nemate pravo 'Trazi'!";
                 throw new FaultException<MyException>(e);
             }
 

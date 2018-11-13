@@ -72,11 +72,31 @@ namespace Manager
                 }
                 else
                 {
-                    X509Certificate2 certificate = CertManager.GetCertificate(identity);
+					string pov = Formatter.VratiIme(identity.Name);
+
+					string[] names = pov.Split('=');
+					string name = "";
+					if (names[1].Contains(','))
+					{
+						string[] niz = names[1].Split(',');
+						name = niz[0].Trim();
+					}
+					else
+					{
+						name = names[1].Trim();
+					}
+
+					X509Certificate2 certificate = CertManager.GetCertificateFromStorage(StoreName.TrustedPeople, StoreLocation.LocalMachine, name);
+
                     if(certificate == null)
                     {
                         Audit.AuthenticationFailed(Formatter.VratiIme(identity.Name), OperationContext.Current.IncomingMessageHeaders.Action, "Authentication failed.");
-                    }else
+						MyException ex = new MyException();
+						ex.Message = "Niste autentifikovani!";
+						throw new FaultException<MyException>(ex);
+
+					}
+					else
                     {
                         Audit.AuthenticationSuccess(Formatter.VratiIme(identity.Name));
                     }

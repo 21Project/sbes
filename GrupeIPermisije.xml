@@ -1,71 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <GP xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <GrupaPermisija>
-    <Permisije>
-      <string>Pristupi</string>
-    </Permisije>
+    <Permisije />
     <NazivGrupe>Grupa1</NazivGrupe>
   </GrupaPermisija>
   <GrupaPermisija>
     <Permisije>
       <string>Trazi</string>
-      <string>Modifikuj</string>
-	  <string>Pristupi</string>
     </Permisije>
     <NazivGrupe>Grupa2</NazivGrupe>
   </GrupaPermisija>
   <GrupaPermisija>
-    <Permisije>
-      <string>Modifikuj</string>
-	  <string>Pristupi</string>
-    </Permisije>
+    <Permisije />
     <NazivGrupe>Grupa3</NazivGrupe>
   </GrupaPermisija>
   <GrupaPermisija>
-    <Permisije>
-      <string>Pristupi</string>
-    </Permisije>
+    <Permisije />
     <NazivGrupe>Grupa4</NazivGrupe>
   </GrupaPermisija>
   <GrupaPermisija>
-    <Permisije>
-      <string>Pristupi</string>
-    </Permisije>
+    <Permisije />
     <NazivGrupe>Grupa5</NazivGrupe>
   </GrupaPermisija>
   <GrupaPermisija>
     <Permisije>
       <string>Trazi</string>
-      <string>Modifikuj</string>
-	  <string>Pristupi</string>
     </Permisije>
     <NazivGrupe>Grupa6</NazivGrupe>
   </GrupaPermisija>
   <GrupaPermisija>
-    <Permisije>
-      <string>Modifikuj</string>
-	  <string>Pristupi</string>
-    </Permisije>
+    <Permisije />
     <NazivGrupe>Grupa7</NazivGrupe>
   </GrupaPermisija>
   <GrupaPermisija>
-    <Permisije>
-      <string>Pristupi</string>
-    </Permisije>
+    <Permisije />
     <NazivGrupe>Grupa8</NazivGrupe>
   </GrupaPermisija>
   <GrupaPermisija>
     <Permisije>
       <string>Trazi</string>
-      <string>Modifikuj</string>
-	  <string>Pristupi</string>
     </Permisije>
     <NazivGrupe>Grupa9</NazivGrupe>
   </GrupaPermisija>
   <GrupaPermisija>
     <Permisije>
       <string>Trazi</string>
-	  <string>Pristupi</string>
     </Permisije>
     <NazivGrupe>Grupa10</NazivGrupe>
   </GrupaPermisija>

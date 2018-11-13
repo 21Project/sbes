@@ -66,29 +66,13 @@ namespace Manager
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erroro while trying to GetCertificateFromFile {0}. ERROR = {1}", fileName, e.Message);
+                Console.WriteLine("Error while trying to GetCertificateFromFile {0}. ERROR = {1}", fileName, e.Message);
             }
 
             return certificate;
         }
 
-        public static X509Certificate2 GetCertificate(IIdentity identity)
-        {
-            try
-            {
-                // X509Identity is an internal class, so we cannot directly access it
-                Type x509IdentityType = identity.GetType();
-
-                // The certificate is stored inside a private field of this class
-                FieldInfo certificateField = x509IdentityType.GetField("certificate", BindingFlags.Instance | BindingFlags.NonPublic);
-
-                return (X509Certificate2)certificateField.GetValue(identity);
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
+        
 
 
     }

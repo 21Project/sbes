@@ -1,0 +1,20 @@
+Marija: 
+	6 => Sertifikat, ima grupu al grupa nema pravo
+	7 => Sertifikat, samo CN
+	8 => Windows u Grupi2, ima permisiju  //samo radi testiranja dva u isto vreme
+
+Suzana:
+	2 => Windows u Grupi1,  nema permisiju
+		 Sertifikat, ima permisiju
+	4 => Windows,  nema ga server
+	5 => Sertifikat, server nema taj sertifikat
+	
+Tamara:
+	1 => Windows, u Grupi2, ima permisiju
+	     Sertifikat, ima permisiju
+	3 => Windows, ni u jednoj grupi, nema permisiju
+	
+	
+Barbara:
+	Server
+	user1(2),user2(1),user3,user8(2)

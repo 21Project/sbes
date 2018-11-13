@@ -13,11 +13,11 @@ using System.ServiceModel.Security;
 
 namespace Client
 {
-    public class WCFClient : ChannelFactory<IZahtjev>, IZahtjev, IDisposable
+    public class WCFClientCert : ChannelFactory<IZahtjev>, IZahtjev, IDisposable
     {
         IZahtjev factory;
 
-        public WCFClient(NetTcpBinding binding, EndpointAddress address)
+        public WCFClientCert(NetTcpBinding binding, EndpointAddress address)
             : base(binding, address)
         {
             

@@ -26,15 +26,17 @@ namespace Server
             interniModel.NapraviInterniModel();
 
             NetTcpBinding binding = new NetTcpBinding();
-            binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows;
+			binding.Security.Mode = SecurityMode.Transport; 
+			binding.Security.Transport.ClientCredentialType = TcpClientCredentialType.Windows; 
             string adresa = "net.tcp://localhost:4000/IZahtjev";
             ServiceHost svc = new ServiceHost(typeof(Zahtjev));
 
             svc.AddServiceEndpoint(typeof(IZahtjev), binding, adresa);
 
-           
             svc.Description.Behaviors.Remove(typeof(ServiceDebugBehavior));
             svc.Description.Behaviors.Add(new ServiceDebugBehavior() { IncludeExceptionDetailInFaults = true });
+
+            
 
 
             List<IAuthorizationPolicy> policies = new List<IAuthorizationPolicy>();
@@ -45,7 +47,8 @@ namespace Server
 
             string srvCertCN = Formatter.ParseName(WindowsIdentity.GetCurrent().Name);
             NetTcpBinding binding1 = new NetTcpBinding();
-            binding1.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
+			binding1.Security.Mode = SecurityMode.Transport;
+			binding1.Security.Transport.ClientCredentialType = TcpClientCredentialType.Certificate;
 
             string address = "net.tcp://localhost:9999/IZahtjev";
             ServiceHost host = new ServiceHost(typeof(Zahtjev));
